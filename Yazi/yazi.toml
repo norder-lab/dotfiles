@@ -1,0 +1,31 @@
+[opener]
+
+edit_dir = [
+    { run = 'cd /d "%s" && nvim', block = true, for = "windows" },
+]
+edit_file = [
+    { run = 'nvim %s', block = true, for = "windows" },
+]
+default = [
+    { run = 'start "" "%s"', orphan = true, for = "windows" },
+]
+
+reveal = [
+    { run = 'explorer /select,"%s"', orphan = true, desc = "Reveal", for = "windows" }
+]
+
+[open]
+prepend_rules = [
+    { url = "*/", use = ["edit_dir", "reveal"] },
+
+    { url = "*.{md,txt}", use = ["edit_file", "reveal"] },
+
+    { mime = "text/*", use = ["edit_file", "reveal"] },
+
+    { url = "*.{toml,json,jsonc,json5,yaml,yml,xml,csv,ini,conf,config}", use = ["edit_file", "reveal"] },
+    { url = "*.{lua,py,rs,c,cpp,h,java,kt,kts,cs,go,php,rb,swift,r,R,sql,js,css,html}", use = ["edit_file", "reveal"] },
+
+    { mime = "application/pdf", use = ["default", "reveal"] },
+    { mime = "image/*", use = ["default", "reveal"] },
+    { mime = "video/*", use = ["default", "reveal"] },
+]
