@@ -62,6 +62,16 @@ config.font_size = 13.0
 config.line_height = 1.1
 
 ----------------------------------------------------------
+-- Shell Setting
+----------------------------------------------------------
+
+if wezterm.target_triple:find('windows') then
+  config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe', '-l' }
+elseif wezterm.target_triple:find('linux') then
+  config.default_prog = { 'bash', '-l' }
+end
+
+----------------------------------------------------------
 -- Other Setting
 ----------------------------------------------------------
 
