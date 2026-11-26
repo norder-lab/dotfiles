@@ -54,8 +54,10 @@ config.enable_tab_bar = false
 -- Font Setting
 ----------------------------------------------------------
 
--- フォント設定（フォントが入っていれば適用される）
-config.font = wezterm.font('Cica')
+config.font = wezterm.font_with_fallback({
+    'Cica',
+    'Symbols Nerd Font', -- アイコン欠けだけを補完するNerd公式フォント
+})
 config.font_size = 13.0
 config.line_height = 1.1
 
